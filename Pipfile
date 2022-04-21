@@ -6,9 +6,11 @@ name = "pypi"
 [packages]
 fastapi = "*"
 uvicorn = "*"
+youtube-transcript-api = "*"
 
 [dev-packages]
 black = "*"
+ipykernel = "*"
 
 [requires]
 python_version = "3.9"
