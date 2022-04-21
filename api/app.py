@@ -24,6 +24,6 @@ def decode(url: str):
     return {"video_id": yt_id, "transcript": transcript_text}
 
 
-# @app.get("/")
-# def main():
-#     return {"message": "Path not found"}
+@app.get("/")
+def main():
+    return {"message": "Path not found"}
