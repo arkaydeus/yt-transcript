@@ -3,10 +3,25 @@ from urllib.parse import quote, unquote
 
 from fastapi import FastAPI
 from youtube_transcript_api import YouTubeTranscriptApi
+from fastapi.middleware.cors import CORSMiddleware
+
 
 from api.yt_id import get_yt_id
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",
+    "https://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/decode/")
