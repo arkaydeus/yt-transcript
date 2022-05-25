@@ -13,6 +13,7 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",
     "https://localhost:3000",
+    "https://zeitgeist-dao.vercel.app/",
 ]
 
 app.add_middleware(
