@@ -1,4 +1,5 @@
 import datetime
+from typing import Optional
 from urllib.parse import quote, unquote
 
 from fastapi import FastAPI
@@ -29,7 +30,15 @@ app.add_middleware(
 def decode(url: str):
 
     decoded: str = unquote(url)
-    yt_id: str = get_yt_id(decoded)
+
+    if not decoded:
+        return {"video_id": None, "transcript": "Video not found"}
+
+    yt_id: Optional[str] = get_yt_id(decoded)
+
+    if not yt_id:
+        return {"video_id": None, "transcript": "Could not find video ID"}
+
     transcript_text = "Video not found"
     if yt_id:
         transcript: list = YouTubeTranscriptApi.get_transcript(yt_id)
